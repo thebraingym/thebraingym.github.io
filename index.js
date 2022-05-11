@@ -96,8 +96,8 @@ function setGame() {
         for (let c = 0; c < 9; c++) {
             let tile = document.createElement("div");
             tile.id = r.toString() + "-" + c.toString();
-            if (board[r][c] != "-") {
-                tile.innerText = board[r][c];
+            if (board_easy[r][c] != "-") {
+                tile.innerText = board_easy[r][c];
                 tile.classList.add("tile-start");
             }
             if (r == 2 || r == 5) {
