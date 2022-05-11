@@ -84,10 +84,8 @@ function selectTile() {
         let r = parseInt(coords[0]);
         let c = parseInt(coords[1]);
 
-        if (solution[r][c] == numSelected.id) {
-            this.innerText = numSelected.id;
-        }
-        else {
+        this.innerText = numSelected.id;
+        if (solution[r][c] != numSelected.id) {
             errors += 1;
             document.getElementById("errors").innerText = errors;
         }
