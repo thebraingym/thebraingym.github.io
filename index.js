@@ -134,7 +134,8 @@ function selectTile() {
 
         if (solution_easy[r][c] == numSelected.id) {
             this.innerText = numSelected.id;
-        } else {
+        }
+        else {
             errors += 1;
             document.getElementById("errors").innerText = errors;
         }
