@@ -132,7 +132,6 @@ function selectTile() {
         let r = parseInt(coords[0]);
         let c = parseInt(coords[1]);
 
-        this.innerText = numSelected.id;
         if (solution_easy[r][c] == numSelected.id) {
             this.innerText = numSelected.id;
         } else {
