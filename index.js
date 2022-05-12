@@ -1,5 +1,6 @@
 var numSelected = null;
 var tileSelected = null;
+var selected_board = null;
 
 var errors = 0;
 
@@ -79,7 +80,11 @@ window.onload = function() {
     setGame();
 }
 
-function setGame() {
+function show(divId) {
+    $("#" + divId).show();
+}
+
+function setDigitsAndErrors() {
     // Digits 1-9
     for (let i = 1; i <= 9; i++) {
         //<div id="1" class="number">1</div>
@@ -91,13 +96,20 @@ function setGame() {
         document.getElementById("digits").appendChild(number);
     }
 
+    //Errors
+    document.getElementById("err").style.visibility = "visible";
+}
+
+function setGame() {
+    document.getElementById("err").style.visibility = "hidden";
+
     // Board 9x9
     for (let r = 0; r < 9; r++) {
         for (let c = 0; c < 9; c++) {
             let tile = document.createElement("div");
             tile.id = r.toString() + "-" + c.toString();
-            if (board_easy[r][c] != "-") {
-                tile.innerText = board_easy[r][c];
+            if (selected_board[r][c] != "-") {
+                tile.innerText = selected_board[r][c];
                 tile.classList.add("tile-start");
             }
             if (r == 2 || r == 5) {
@@ -132,7 +144,7 @@ function selectTile() {
         let r = parseInt(coords[0]);
         let c = parseInt(coords[1]);
 
-        if (solution_easy[r][c] == numSelected.id) {
+        if (selected_solution[r][c] == numSelected.id) {
             this.innerText = numSelected.id;
         }
         else {
@@ -141,3 +153,40 @@ function selectTile() {
         }
     }
 }
+
+function displayEasy() {
+    selected_board = board_easy;
+    setGame();
+    document.getElementById("levelDiv").style.visibility = "hidden";
+    setDigitsAndErrors();
+}
+
+function displayMedium() {
+    selected_board = board_medium;
+    setGame();
+    document.getElementById("levelDiv").style.visibility = "hidden";
+    setDigitsAndErrors();
+}
+
+function displayHard() {
+    selected_board = board_hard;
+    setGame();
+    document.getElementById("levelDiv").style.visibility = "hidden";
+    setDigitsAndErrors();
+}
+
+
+let easyBtn = document.createElement("button");
+easyBtn.innerHTML = "Easy";
+easyBtn.name = "easyButton";
+document.body.appendChild(easyBtn);
+
+let mediumBtn = document.createElement("button");
+mediumBtn.innerHTML = "Medium";
+mediumBtn.name = "mediumButton";
+document.body.appendChild(mediumBtn);
+
+let hardBtn = document.createElement("button");
+hardBtn.innerHTML = "Hard";
+hardBtn.name = "hardButton";
+document.body.appendChild(hardBtn);

@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html>
+    <style>
+        .levelButton {
+          border: none;
+          color: black;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          background-color: aquamarine;
+        }
+        </style>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width initial-scale=1.0 user-scalable=no">
@@ -11,15 +25,29 @@
 
     <body>
         <h1>SUDOKU</h1>
+        <div id="levelDiv">
+            <h2>CHOOSE A LEVEL:</h2>
+            <button class="levelButton" name="easyButton" onclick="displayEasy()">
+                Easy
+            </button>
+            <button class="levelButton" name="mediumButton" onclick="displayMedium()">
+                Medium
+            </button>
+            <button class="levelButton" name="hardButton" onclick="displayHard()">
+                Hard
+            </button>
+        </div>
+
         <hr>
-        <h3>Errors:</h3> 
-        <h2 id="errors">0</h2>
+        <div id="err">
+            <h3 >Errors:</h3> 
+            <h2 id="errors">0</h2>
+        </div>
 
         <!-- 9x9 board -->
         <div id="board"></div>
         <br>
-        <div id="digits">
-        </div>
+        <div id="digits"></div>
 
     </body>
 
